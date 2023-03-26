@@ -81,7 +81,7 @@ class TrainVQGAN:
 
                     if i % 10 == 0:
                         with torch.no_grad():
-                            real_fake_images = torch.cat((imgs[:4], decoded_images.add(1).mul(0.5)[:4]))
+                            real_fake_images = torch.cat((imgs.add(1).mul(0.5)[:4], decoded_images.add(1).mul(0.5)[:4]))
                             vutils.save_image(real_fake_images, os.path.join("results", f"{epoch}_{i}.jpg"), nrow=4)
 
                     pbar.set_postfix(
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     parser.add_argument('--perceptual-loss-factor', type=float, default=1., help='Weighting factor for perceptual loss.')
 
     args = parser.parse_args()
-    args.dataset_path = r"C:\Users\dome\datasets\flowers"
+    args.dataset_path = "/datasets/flowers"
 
     train_vqgan = TrainVQGAN(args)
 
