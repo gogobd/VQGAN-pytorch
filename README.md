@@ -14,6 +14,18 @@ Code Tutorial + Implementation Tutorial
 # VQGAN
 Vector Quantized Generative Adversarial Networks (VQGAN) is a generative model for image modeling. It was introduced in [Taming Transformers for High-Resolution Image Synthesis](https://arxiv.org/abs/2012.09841). The concept is build upon two stages. The first stage learns in an autoencoder-like fashion by encoding images into a low-dimensional latent space, then applying vector quantization by making use of a codebook. Afterwards, the quantized latent vectors are projected back to the original image space by using a decoder. Encoder and Decoder are fully convolutional. The second stage is learning a transformer for the latent space. Over the course of training it learns which codebook vectors go along together and which not. This can then be used in an autoregressive fashion to generate before unseen images from the data distribution.
 
+## Dependencies
+
+```
+conda init
+conda create -n vqgan
+conda activate vqgan
+conda install -y -c conda-forge pytorch-gpu torchvision cudatoolkit=11.3 
+conda install -y -c anaconda notebook nb_conda_kernels ipywidgets ipykernel tqdm
+pip install albumentations matplotlib
+```
+
+
 ## Results for First Stage (Reconstruction):
 
 
